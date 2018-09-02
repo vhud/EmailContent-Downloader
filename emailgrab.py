@@ -42,7 +42,7 @@ def mlistloader():
             m = [x for x in m if x != '' and x != '\n']
             return m
     except:
-        print("mlist file doesn't exist. re-create it with mlistcreate.py")
+        print("mlist file doesn't exist. create an mlist file.")
         input("press enter to quit...")
 
 def parseit(msg, sender, direct='default', grab='ALL'):
