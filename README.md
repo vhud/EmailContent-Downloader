@@ -6,4 +6,12 @@ I made it to work with outlook so it may need some tinkering to work with other 
 
 emailgrab.py doesn't create the mlist file, so you'll have to create an empty file and simply enter the email ID where you'd like it to start scanning from followed by a comma(since it's treated a csv, although without using the csv library).
 
-If used properly the mlist file becomes a handy chronological record of all email IDs for a particular inbox and a nice tool to position the scanner in a particular location without having to mess with any code.
+If used properly the mlist file becomes a handy chronological record of all email IDs for a particular inbox and a nice tool to position the scanner in a particular location without having to mess with any code(since when emailgrab.py runs it grabs the last email ID in mlist and starts stepping backwards through the inbox looking for a match).
+
+Three log files are created, logReconnect() to record every time the email server can't be reached, logCorruption() to record an email that can't be decoded, and emailgrab.log will have a general info type log of what the scanner is currently up to.
+
+If there's no connection to the email server emailgrab.py will simply log the disconnect and keep polling every 30 seconds by default. Upon reconnection it'll continue where it left off.
+
+At this point it should go without saying but if emailgrab.py is killed or crashes it'll start off at the last email ID in mlist when it's started back up. If you feel there's some sort of error or bad loop the first thing to try is to erase a few email IDs in mlist and restart emailgrab.py then watch the logs.
+
+This can be refactored to use logger and csv libs, if you do so let me know!
