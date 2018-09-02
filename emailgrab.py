@@ -27,7 +27,7 @@ def mlistadd(mem):
     '''
     for adding m-ID to NV file mlist
     '''
-    with open('emailgrab/mlist', 'a') as f:
+    with open('mlist', 'a') as f:
         f.write(mem)
         f.write(',')
 
@@ -36,7 +36,7 @@ def mlistloader():
     for loading message-IDs of read emails from file mlist to memory
     '''
     try:
-        with open('emailgrab/mlist') as f:
+        with open('mlist') as f:
             reader = f.read()
             m = reader.split(',')
             m = [x for x in m if x != '' and x != '\n']
